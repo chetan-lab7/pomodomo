@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FocusFlow - Pomodoro Timer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
+    <meta name="author" content="chetan-lab7">
+    <meta name="date" content="2025-05-19">
+</head>
+<body class="dark-theme">
+    <div id="background-animation"></div>
+    
+    <header>
+        <div class="logo-container">
+            <a href="index.html" class="logo-link">
+                <h1><i class="fas fa-clock"></i> FocusFlow</h1>
+                <p class="tagline">Master Your Time, Amplify Your Results</p>
+            </a>
+        </div>
+        <div class="header-controls">
+            <button class="theme-toggle" title="Toggle light/dark mode"><i class="fas fa-moon"></i></button>
+            <div class="user-info">
+                <span class="username">chetan-lab7</span>
+                <span class="update-date">2025-05-19 08:58:18</span>
+            </div>
+        </div>
+    </header>
+    
+    <main class="pomodoro-main">
+        <section class="pomodoro-section">
+            <h2>Pomodoro Timer <span class="hint">(Focus & Break Timer)</span></h2>
+            
+            <!-- Timer Mode Selector -->
+            <div class="timer-mode-selector">
+                <button class="timer-mode active" data-minutes="25" data-mode="focus">
+                    <i class="fas fa-brain"></i> Focus
+                    <span class="mode-time">25 min</span>
+                </button>
+                <button class="timer-mode" data-minutes="5" data-mode="short-break">
+                    <i class="fas fa-coffee"></i> Short Break
+                    <span class="mode-time">5 min</span>
+                </button>
+                <button class="timer-mode" data-minutes="15" data-mode="long-break">
+                    <i class="fas fa-couch"></i> Long Break
+                    <span class="mode-time">15 min</span>
+                </button>
+            </div>
+            
+            <!-- Timer Display -->
+            <div class="pomodoro-container">
+                <div class="timer-display">
+                    <div class="timer-circle">
+                        <div class="timer-progress" id="timer-progress"></div>
+                        <div class="timer-text" id="timer-text">25:00</div>
+                    </div>
+                </div>
+                
+                <!-- Timer Controls -->
+                <div class="timer-controls">
+                    <button id="start-timer" class="timer-btn primary-btn"><i class="fas fa-play"></i> Start</button>
+                    <button id="pause-timer" class="timer-btn secondary-btn" disabled><i class="fas fa-pause"></i> Pause</button>
+                    <button id="reset-timer" class="timer-btn secondary-btn"><i class="fas fa-redo"></i> Reset</button>
+                </div>
+                
+                <!-- Custom Time Input -->
+                <div class="custom-time-input">
+                    <label for="custom-minutes">Custom Time:</label>
+                    <div class="custom-time-controls">
+                        <input type="number" id="custom-minutes" min="1" max="60" value="25">
+                        <span class="time-unit">minutes</span>
+                        <button id="set-custom-time" class="action-btn"><i class="fas fa-check"></i> Set</button>
+                    </div>
+                </div>
+                
+                <!-- Session Counter -->
+                <div class="session-counter">
+                    <div class="counter-badge">
+                        <i class="fas fa-check-circle"></i>
+                        <span id="session-count">0</span>
+                    </div>
+                    <span class="counter-label">Focus sessions completed</span>
+                </div>
+            </div>
+            
+            <!-- Pomodoro Instructions -->
+            <div class="pomodoro-instructions">
+                <h3>Using the Pomodoro Technique</h3>
+                <ol>
+                    <li><strong>Focus Time (25 min):</strong> Work without interruptions on a single task</li>
+                    <li><strong>Short Break (5 min):</strong> Take a brief break to rest your mind</li>
+                    <li><strong>Repeat:</strong> After 4 focus sessions, take a longer break (15 min)</li>
+                </ol>
+                <div class="keyboard-shortcuts">
+                    <h4>Keyboard Shortcuts</h4>
+                    <div class="shortcuts-grid">
+                        <div class="shortcut"><kbd>Space</kbd> <span>Start/Pause Timer</span></div>
+                        <div class="shortcut"><kbd>R</kbd> <span>Reset Timer</span></div>
+                        <div class="shortcut"><kbd>1</kbd> <span>Focus Mode</span></div>
+                        <div class="shortcut"><kbd>2</kbd> <span>Short Break</span></div>
+                        <div class="shortcut"><kbd>3</kbd> <span>Long Break</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>FocusFlow</h4>
+                <p>Master your time with the Pomodoro Technique. Focus, break, repeat.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="pomodoro.html">Pomodoro Timer</a></li>
+                    <li><a href="#" class="theme-toggle-link">Toggle Theme</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>About</h4>
+                <p>FocusFlow helps you stay focused and productive with the proven Pomodoro technique.</p>
+                <p>Created by <span class="username">chetan-lab7</span></p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 FocusFlow. Last updated <span class="update-date">2025-05-19 08:58:18</span></p>
+        </div>
+    </footer>
+    
+    <!-- Success notification -->
+    <div id="notification" class="notification">
+        <div class="notification-content">
+            <i class="notification-icon fas fa-check-circle"></i>
+            <span id="notification-message">Action completed successfully!</span>
+        </div>
+    </div>
+    
+    <script src="pomodoro.js"></script>
+</body>
+</html>
